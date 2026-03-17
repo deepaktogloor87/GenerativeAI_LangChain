@@ -1,0 +1,21 @@
+{
+    "name": null,
+    "input_variables": [
+        "CATEGORY",
+        "HIGH_MARGIN",
+        "PRODUCT_LINK",
+        "PRODUCT_PRICE",
+        "RATING",
+        "REVIEWS",
+        "WEBSITE_DOMAIN"
+    ],
+    "optional_variables": [],
+    "output_parser": null,
+    "partial_variables": {},
+    "metadata": null,
+    "tags": null,
+    "template": "\n    \"Analyze the product from {WEBSITE_DOMAIN} in the {CATEGORY} category using the following details:\n    Product Link: {PRODUCT_LINK}  \n    Price: {PRODUCT_PRICE}  \n    Rating: {RATING}  \n    Number of Reviews: {REVIEWS}  \n    High Margin Indicator: {HIGH_MARGIN}  \n\n    Based on these inputs, evaluate:\n\n    1. Whether this product is a high-potential affiliate product  \n    2. Demand strength (based on reviews & rating)  \n    3. Profitability potential (based on price & margin)  \n    4. Competition level  \n    5. Trustworthiness of the product  \n\n    Then provide:\n    - A clear verdict: (High / Medium / Low potential)  \n    - Reasons for the verdict  \n    - Suggestions to improve conversions (content angles, audience targeting, platforms)\"\n    ",
+    "template_format": "f-string",
+    "validate_template": true,
+    "_type": "prompt"
+}

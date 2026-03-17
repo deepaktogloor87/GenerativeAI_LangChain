@@ -13,7 +13,8 @@ template = PromptTemplate(
     template="""
     Create a {WORD_COUNT}-word blog post on {TOPIC}, focusing on {INTEREST}. Use an engaging introduction, clear subheadings, actionable tips, real-life examples, and a strong conclusion. Optimize for readability and include a conversational tone suitable for {TARGET_AUDIENCE}.
     """,
-    input_variables=["WORD_COUNT", "TOPIC", "INTEREST", "TARGET_AUDIENCE"]
+    input_variables=["WORD_COUNT", "TOPIC", "INTEREST", "TARGET_AUDIENCE"],
+    validate_template=True
 )
 
 #placeholder values
