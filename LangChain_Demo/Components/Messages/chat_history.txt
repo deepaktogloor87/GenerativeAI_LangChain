@@ -1,0 +1,20 @@
+User: Hi
+Bot: Hello! How can I help you today?
+
+User: I want to book a flight to Delhi
+Bot: Sure! From which city will you be traveling?
+
+User: Bangalore
+Bot: Great. When do you plan to travel?
+
+User: Tomorrow morning
+Bot: I found several flights. Do you prefer a specific airline or budget?
+
+User: Cheapest option
+Bot: The lowest fare is ₹4,500 with Indigo at 6:10 AM. Would you like to proceed?
+
+User: Yes
+Bot: Please provide passenger details.
+
+User: Name: Rahul Sharma, Age: 29
+Bot: Thanks! Proceeding to payment. Do you want to use saved card ending in 1234?
