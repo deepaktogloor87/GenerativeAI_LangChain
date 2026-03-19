@@ -1,5 +1,5 @@
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
-from typing import TypedDict, Annotated, Optional
+from typing import TypedDict, Annotated, Optional, Literal
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -12,7 +12,7 @@ model = ChatHuggingFace(llm=llm)
 # Define the output schema using TypedDict
 class ReviewSummary(TypedDict):
     Summary : Annotated[str, "Write a concise summary of the review in 2-3 sentences."]
-    sentiment: Annotated[str, "Determine the overall sentiment of the review as Positive, Negative, or Neutral."]
+    sentiment: Annotated[Literal['Positive, Negative, or Neutral.'], "Determine the overall sentiment of the review"]
     pros: Annotated[Optional[list[str]], "List the positive aspects mentioned in the review."]
     cons: Annotated[Optional[list[str]], "List the negative aspects mentioned in the review."]
 
@@ -45,7 +45,7 @@ I like this AC and will definitely recommend going for it. Carrier is a well-est
 structured_model = model.with_structured_output(ReviewSummary)
 
 result = structured_model.invoke(review)
-print(result)
+print(result['sentiment'])
 
 
 
