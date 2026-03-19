@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "Summary": {
+      "type": "string",
+      "description": "Write a concise summary of the review in 2-3 sentences."
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": [
+        "Positive",
+        "Negative"
+      ],
+      "description": "Determine the overall sentiment of the review."
+    },
+    "pros": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List the positive aspects mentioned in the review."
+    },
+    "cons": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List the negative aspects mentioned in the review."
+    }
+  },
+  "required": [
+    "Summary",
+    "sentiment"
+  ]
+}
