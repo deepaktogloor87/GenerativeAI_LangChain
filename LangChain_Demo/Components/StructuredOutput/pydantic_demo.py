@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 
 class Student(BaseModel):
-    name: str
+    name: str = 'John Doe'
 
-student = Student(name="Alice")
-print(type(student))
+student = Student()
+print(student.name)
