@@ -13,7 +13,7 @@ template1 = PromptTemplate(
     inputs_variables = ["topic"])
 
 template2 = PromptTemplate(
-    template = "Write a concise summary of the following text \n {text}",
+    template = "Write a 5 lines summary of the following text in bullet style \n {text}",
     input_variables = ["text"])
 
 prompt1 = template1.invoke({'topic': "LangGraph"})
