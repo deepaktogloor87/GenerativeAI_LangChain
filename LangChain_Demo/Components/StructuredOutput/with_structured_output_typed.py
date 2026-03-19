@@ -1,5 +1,5 @@
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
-from typing import TypedDict, Annotated
+from typing import TypedDict, Annotated, Optional
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,8 +13,8 @@ model = ChatHuggingFace(llm=llm)
 class ReviewSummary(TypedDict):
     Summary : Annotated[str, "Write a concise summary of the review in 2-3 sentences."]
     sentiment: Annotated[str, "Determine the overall sentiment of the review as Positive, Negative, or Neutral."]
-    pros: Annotated[list[str], "List the positive aspects mentioned in the review."]
-    cons: Annotated[list[str], "List the negative aspects mentioned in the review."]
+    pros: Annotated[Optional[list[str]], "List the positive aspects mentioned in the review."]
+    cons: Annotated[Optional[list[str]], "List the negative aspects mentioned in the review."]
 
 review = """
 I bought the 1.5 ton 3 star 2025 model in the month of Feb '25 and am writing this review after using it for a few hours every night since 3 weeks. In Bengaluru, it's not yet the summer peak but it gets hot during the day ~31 deg.
