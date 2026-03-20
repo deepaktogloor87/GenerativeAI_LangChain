@@ -1,6 +1,7 @@
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableLambda
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -20,11 +21,12 @@ template2 = PromptTemplate(
 parser = StrOutputParser()
 chain = (template1 
          | model 
-         | parser 
+         | parser
+         | RunnableLambda(lambda x: {"text": x}) 
          | template2 
          | model 
          | parser
          )
 
 result = chain.invoke({'topic': "Black Hole"})
-print(result.content)
+print(result)
