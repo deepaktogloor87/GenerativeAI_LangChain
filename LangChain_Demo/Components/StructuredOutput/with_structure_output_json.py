@@ -1,7 +1,4 @@
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
-from langchain_core.prompts import load_prompt
-import json
-import os
 from dotenv import load_dotenv
 load_dotenv()
 
