@@ -1,5 +1,5 @@
 from langchain_huggingface import HuggingFaceEndpoint, ChatHuggingFace
-from langchain.output_parsers import StructuredOutputParser, ResponseSchema
+from langchain_core.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
 
