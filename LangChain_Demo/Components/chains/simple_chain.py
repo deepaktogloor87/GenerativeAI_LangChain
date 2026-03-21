@@ -15,10 +15,7 @@ llm = HuggingFaceEndpoint(
 model = ChatHuggingFace(llm=llm)
 
 # Prompt
-prompt = ChatPromptTemplate(
-    template="Generate 5 facts about {topic}",
-    input_variables=["topic"]
-)
+prompt = ChatPromptTemplate.from_template("Generate 5 facts about {topic}")
 
 # Output parser
 parser = StrOutputParser()
@@ -29,3 +26,5 @@ chain = prompt | model | parser
 # Run chain
 result = chain.invoke({'topic': 'women'})
 print(result)
+
+chain.get_graph().print_ascii()
