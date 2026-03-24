@@ -43,8 +43,6 @@ splitter = CharacterTextSplitter(
     chunk_overlap=0
 )
 
-# result = splitter.split_text(text)
-# print(result)
+result = splitter.split_text(text)
+print(result)
 
-result = splitter.split_documents(text2)
-print(result[0].page_content)
