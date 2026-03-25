@@ -1,5 +1,5 @@
 from langchain_core.documents import Document
-from langchain.vectorstores import FAISS
+from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
 
@@ -39,17 +39,17 @@ docs = [
 
 embeddings_model = HuggingFaceEmbeddings()
 
-vectorStore = FIASS.from_documents(
+vectorStore = FAISS.from_documents(
     documents=docs,
     embedding=embeddings_model
 )
 
 retriever = vectorStore.as_retriever(
     search_type='mmr',
-    search_kwargs={'k':3, 'lambda_mult':1}   #lambda_mult is relavance-diversity baance, k=top 3 research
+    search_kwargs={'k':2, 'lambda_mult':0.5}   #lambda_mult is relavance-diversity baance, k=top 3 research
 )
 
-query = 'What is langchain?'
+query = 'What is machine learning?'
 result = retriever.invoke(query)
 
 for i,doc in enumerate(result):
