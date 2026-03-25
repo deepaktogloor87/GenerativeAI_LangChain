@@ -44,7 +44,7 @@ print('Chroma DB Sucessfully Initialized...!')
 
 # view documents from chromadb
 res = vector_store.get(include=["documents", "embeddings", "metadatas"])
-# print(res)
+print(res)
 
 # let's perform search on vectorStore.
 res1 = vector_store.similarity_search(
@@ -65,4 +65,17 @@ res_fil = vector_store.similarity_search_with_score(
     query='',
     filter={'topic':'Vector DB'}
 )
-print(res_fil)
+# print(res_fil)
+
+# How to update existing document.
+update_doc2 = Document(
+    page_content="LangChain's integration with Hugging Face enables seamless local model usage because langchain is a good framework.",
+    metadata={"source": "integration_guide", "topic": "Frameworks"}
+)
+
+vector_store.update_document(document_id='db62666b-b4de-4a95-b39c-2ccb928f4655', 
+                             document=update_doc2)
+
+# view after updating the document
+updated_doc_res = vector_store.get(include=["embeddings","metadatas","documents"])
+print(updated_doc_res)
