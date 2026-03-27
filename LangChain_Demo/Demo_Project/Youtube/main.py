@@ -78,5 +78,7 @@ llm = ChatOpenAI(model='gpt-4o-mini')
 final_prompt = prompt.format(context=context_text,
                              question=question)
 
+# Phase 4 : GENERATION
+# Step 1: Simply invoke the final_prompt to generate answer
 response = llm.invoke(final_prompt)
 print(response.content)
