@@ -66,7 +66,7 @@ prompt = PromptTemplate(
 )
 
 # Step 2: calling retriver again with our actual question this time.
-question = 'Is this topic aligned to help tester?, if yes what they discussed.'
+question = 'Is this topic aligned to help tester?, if yes what they discussed. Can you write a code implementation for all the matrices'
 retrived_docs = retriver.invoke(question)
 # print(retrived_docs)
 
