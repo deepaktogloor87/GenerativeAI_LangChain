@@ -3,6 +3,7 @@ from youtube_transcript_api import YouTubeTranscriptApi, TranscriptsDisabled
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 from langchain_core.prompts import PromptTemplate
+from langchain_openai import OpenAIEmbeddings
 
 load_dotenv()
 
@@ -23,6 +24,7 @@ try:
 
 except TranscriptsDisabled:
     print("No captions available for this video")
+    exit()
 
 # Step 2 : applying textsplitter to prepare the document
 splitter = RecursiveCharacterTextSplitter(
@@ -30,8 +32,14 @@ splitter = RecursiveCharacterTextSplitter(
     chunk_overlap = 200
 )
 chunks = splitter.create_documents([transcript])
-print(len(chunks))
-print(chunks)
+# print(len(chunks))
+# print(chunks)
+
+# Step 3 : Convert all the chunks to vectorStore
+embeddings = OpenAIEmbeddings(model='text-embedding-3-small')
+vector_store = FAISS.from_documents(chunks, embeddings)
+
+print(vector_store.index_to_docstore_id)
 
 
 
