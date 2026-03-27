@@ -7,16 +7,32 @@ from langchain_core.prompts import PromptTemplate
 load_dotenv()
 
 # PHASE 1 Indexing
-video_id = 'vJOGC8QJZJQ'  # only the ID which is between V= and & in the url
+
+#Step 1 : Fetching Transcript from video and creating transcript
+
+video_id = 'NebOSOTp-zA'  # only the ID which is between V= and & in the url
 try:
     api = YouTubeTranscriptApi()
     # if you don't care which language, this return the best one
     transcript_list = api.fetch(video_id=video_id, languages=['en'])
+    # print(transcript_list)
 
     #Flatten it to plan text
     transcript = " ".join(chunk.text for chunk in transcript_list)
-    print(transcript)
+    # print(transcript)
+
 except TranscriptsDisabled:
     print("No captions available for this video")
+
+# Step 2 : applying textsplitter to prepare the document
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size = 1000, 
+    chunk_overlap = 200
+)
+chunks = splitter.create_documents([transcript])
+print(len(chunks))
+print(chunks)
+
+
 
 
