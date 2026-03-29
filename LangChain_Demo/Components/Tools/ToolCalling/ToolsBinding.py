@@ -19,5 +19,12 @@ print(multiply.name)  # Output: "multiply"
 print(multiply.args) # Output: {'a': 3, 'b': 4}
       
 # Tool binding
-llm = ChatOpenAI(model="gpt-3.5-mini")
-llm_with_tools =llm.bind_tools([multiply])
+def BoundedTool():
+    """A tool that is bound to a specific LLM."""
+    llm = ChatOpenAI(model="gpt-4o-mini")
+    return llm.bind_tools([multiply])
+
+# Tool calling
+llm_with_tools = BoundedTool()
+response = llm_with_tools.invoke("can you multiply 5 and 6?")
+print(response.tool_calls[0])  # Output: "The product of 5 and 6 is 30."
